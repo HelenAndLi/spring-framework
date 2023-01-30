@@ -193,6 +193,12 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 	 * @see org.springframework.beans.factory.support.DefaultListableBeanFactory#setAllowEagerClassLoading
 	 * @see org.springframework.beans.factory.support.DefaultListableBeanFactory#setAllowCircularReferences
 	 * @see org.springframework.beans.factory.support.DefaultListableBeanFactory#setAllowRawInjectionDespiteWrapping
+	 *
+	 * 为这个上下文创建一个内部bean工厂
+	 * 每次{refresh()}尝试时都会调用
+	 * 默认实现创建一个{DefaultListableBeanFactory}与此上下文的父bean
+	 * 的{getInternalParentBeanFactory()内部bean工厂}作为父bean工厂。可以在子类中重写，
+	 * 例如自定义DefaultListableBeanFactory的设置。
 	 */
 	protected DefaultListableBeanFactory createBeanFactory() {
 		return new DefaultListableBeanFactory(getInternalParentBeanFactory());

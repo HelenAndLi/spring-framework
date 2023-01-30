@@ -38,6 +38,9 @@ import org.springframework.lang.Nullable;
  * @author Jean-Pierre Pawlak
  * @param <T> the result type
  * @see MappingSqlQueryWithParameters
+ *
+ * 有可重用查询的具体子类的必须实现抽象的mapRow(ResultSet, int)方法，将JDBC ResultSet的每一行转换为一个对象
+ * 通过删除参数和上下文来简化MappingSqlQueryWithParameters API。大多数子类不关心参数。如果你不使用上下文信息，子类this代替MappingSqlQueryWithParameters。
  */
 public abstract class MappingSqlQuery<T> extends MappingSqlQueryWithParameters<T> {
 
@@ -61,6 +64,7 @@ public abstract class MappingSqlQuery<T> extends MappingSqlQueryWithParameters<T
 	 * This method is implemented to invoke the simpler mapRow
 	 * template method, ignoring parameters.
 	 * @see #mapRow(ResultSet, int)
+	 * 实现此方法是为了调用更简单的mapRow模板方法，忽略参数。
 	 */
 	@Override
 	@Nullable
@@ -82,6 +86,8 @@ public abstract class MappingSqlQuery<T> extends MappingSqlQueryWithParameters<T
 	 * @throws SQLException if there's an error extracting data.
 	 * Subclasses can simply not catch SQLExceptions, relying on the
 	 * framework to clean up.
+	 * 子类必须实现此方法，将ResultSet的每一行转换为结果类型的对象。
+	 * 与MappingSqlQueryWithParameters的直接子类相反，该类的子类不需要关心查询对象的execute方法的参数。
 	 */
 	@Nullable
 	protected abstract T mapRow(ResultSet rs, int rowNum) throws SQLException;
