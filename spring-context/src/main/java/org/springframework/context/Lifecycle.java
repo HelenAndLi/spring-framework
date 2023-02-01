@@ -19,13 +19,19 @@ package org.springframework.context;
 /**
  * A common interface defining methods for start/stop lifecycle control.
  * The typical use case for this is to control asynchronous processing.
- * <b>NOTE: This interface does not imply specific auto-startup semantics.
+ * <b>NOTE: This interface does not imply specific(明确的，具体的，特定的) auto-startup semantics.
  * Consider implementing {@link SmartLifecycle} for that purpose.</b>
+ * 定义用来启动/停止声明周期控制方法的公共接口。
+ * 典型的使用案例就是控制异步处理。
+ * 注意：该接口不意味着特定的自动启动语义。
+ * 要实现这个目的可以考虑实现{SmartLifecycle}
  *
  * <p>Can be implemented by both components (typically a Spring bean defined in a
  * Spring context) and containers  (typically a Spring {@link ApplicationContext}
  * itself). Containers will propagate start/stop signals to all components that
  * apply within each container, e.g. for a stop/restart scenario at runtime.
+ * 可以由组件(通常是Spring上下文中定义的Spring bean)和容器(通常是Spring {@link ApplicationContext}本身)实现。
+ * 容器会将启动/停止信号传播到每个容器内应用的所有组件，例如在运行时的停止/重启场景。
  *
  * <p>Can be used for direct invocations or for management operations via JMX.
  * In the latter case, the {@link org.springframework.jmx.export.MBeanExporter}
@@ -33,12 +39,16 @@ package org.springframework.context;
  * {@link org.springframework.jmx.export.assembler.InterfaceBasedMBeanInfoAssembler},
  * restricting the visibility of activity-controlled components to the Lifecycle
  * interface.
+ * 可用于直接调用或通过JMX进行管理操作。
+ * 在后一种情况下，{MBeanExporter}通常用{InterfaceBasedMBeanInfoAssembler}，将活动控制组件的可见性限制为生命周期接口。
  *
  * <p>Note that the present {@code Lifecycle} interface is only supported on
  * <b>top-level singleton beans</b>. On any other component, the {@code Lifecycle}
  * interface will remain undetected and hence ignored. Also, note that the extended
  * {@link SmartLifecycle} interface provides sophisticated integration with the
  * application context's startup and shutdown phases.
+ * 注意，目前的{Lifecycle}接口只支持顶级单例bean。在任何其他组件上，{Lifecycle}接口将保持未被检测到，因此被忽略。
+ * 另外，请注意扩展的{SmartLifecycle}接口提供了与应用程序上下文的启动和关闭阶段的复杂集成。
  *
  * @author Juergen Hoeller
  * @since 2.0

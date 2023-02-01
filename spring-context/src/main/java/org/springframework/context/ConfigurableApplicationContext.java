@@ -32,6 +32,7 @@ import org.springframework.lang.Nullable;
  * Provides facilities to configure an application context in addition
  * to the application context client methods in the
  * {@link org.springframework.context.ApplicationContext} interface.
+ * SPI接口将由大多数(如果不是所有)应用程序上下文实现。
  *
  * <p>Configuration and lifecycle methods are encapsulated here to avoid
  * making them obvious to ApplicationContext client code. The present
