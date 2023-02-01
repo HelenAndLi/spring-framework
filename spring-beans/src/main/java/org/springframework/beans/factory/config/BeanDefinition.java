@@ -28,7 +28,7 @@ import org.springframework.lang.Nullable;
  * concrete implementations.
  *
  * <p>This is just a minimal interface: The main intention is to allow a
- * {@link BeanFactoryPostProcessor} to introspect and modify property values
+ * {@link BeanFactoryPostProcessor} to introspect(内省) and modify property values
  * and other bean metadata.
  *
  * @author Juergen Hoeller
@@ -37,6 +37,9 @@ import org.springframework.lang.Nullable;
  * @see ConfigurableListableBeanFactory#getBeanDefinition
  * @see org.springframework.beans.factory.support.RootBeanDefinition
  * @see org.springframework.beans.factory.support.ChildBeanDefinition
+ *
+ * BeanDefinition描述了一个bean实例，它具有属性值、构造函数参数值以及具体实现提供的进一步信息。
+ * 这只是一个最小的接口：主要目的是允许{BeanFactoryPostProcessor}内省和修改属性值和其他bean元数据。
  */
 public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 

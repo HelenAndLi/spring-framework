@@ -23,11 +23,13 @@ import org.springframework.util.Assert;
 
 /**
  * Interface defining a generic contract for attaching and accessing metadata
- * to/from arbitrary objects.
+ * to/from arbitrary(任意的) objects.
  *
  * @author Rob Harrop
  * @author Sam Brannen
  * @since 2.0
+ *
+ * 接口，定义用于向任意对象附加或从任意对象访问元数据的通用协议。
  */
 public interface AttributeAccessor {
 

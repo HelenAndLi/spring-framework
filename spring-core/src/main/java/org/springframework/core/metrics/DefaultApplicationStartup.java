@@ -26,6 +26,8 @@ import java.util.function.Supplier;
  * <p>This variant is designed for minimal overhead and does not record events.
  *
  * @author Brian Clozel
+ *
+ * 这个变形是为最小化开销而设计的，并且不记录事件。
  */
 class DefaultApplicationStartup implements ApplicationStartup {
 

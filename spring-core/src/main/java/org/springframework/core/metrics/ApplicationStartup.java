@@ -24,6 +24,9 @@ package org.springframework.core.metrics;
  *
  * @author Brian Clozel
  * @since 5.3
+ *
+ * 使用{StartupStep steps}检测应用程序启动阶段
+ * 核心容器及其基础架构组件可以使用{@code ApplicationStartup}标记应用程序启动期间的步骤，并收集关于执行上下文或它们的处理时间的数据。
  */
 public interface ApplicationStartup {
 

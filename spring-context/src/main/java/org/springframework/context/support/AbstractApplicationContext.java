@@ -764,14 +764,16 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 * Instantiate(实例化) and invoke all registered BeanFactoryPostProcessor beans,
 	 * respecting(鉴于) explicit order(明令) if given.
 	 * <p>Must be called before singleton instantiation.
-	 * 实例化并调用所有已注册的BeanFactoryPostProcessor bean，如果给定，则遵循显式顺序。
+	 * 实例化并调用所有已注册的BeanFactoryPostProcessor beans，如果给定了明确的顺序。
 	 * 必须在单例实例化之前调用
 	 */
 	protected void invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory beanFactory) {
 		PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(beanFactory, getBeanFactoryPostProcessors());
 
 		// Detect a LoadTimeWeaver and prepare for weaving, if found in the meantime
+		// 检测LoadTimeWeaver并准备织入(如果同时发现)
 		// (e.g. through an @Bean method registered by ConfigurationClassPostProcessor)
+		// 比如：通过ConfigurationClassPostProcessor注册的@Bean方法
 		if (!NativeDetector.inNativeImage() && beanFactory.getTempClassLoader() == null && beanFactory.containsBean(LOAD_TIME_WEAVER_BEAN_NAME)) {
 			beanFactory.addBeanPostProcessor(new LoadTimeWeaverAwareProcessor(beanFactory));
 			beanFactory.setTempClassLoader(new ContextTypeMatchClassLoader(beanFactory.getBeanClassLoader()));
